@@ -69,7 +69,7 @@ function genSession (baseUrl, devId, authHash, platform) {
 
 // Test Session ID
 function testSession (baseUrl, devId, authKey, platform) {
-  let sessionId;
+  let sessionId
   switch (platform) {
     case ('smitePc'):
       sessionId = process.env.smiteSession
@@ -95,7 +95,5 @@ function testSession (baseUrl, devId, authKey, platform) {
     })
   })
 }
-
-
 
 module.exports = SessionAPI

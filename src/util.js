@@ -3,8 +3,6 @@
 // Dependencies
 const Moment = require('moment')
 const md5 = require('md5')
-const baseUrl = 'http://api.smitegame.com/smiteapi.svc/'
-
 
 function getUtcTime () {
   return new Moment().utc().format('YYYYMMDDHHmmss')

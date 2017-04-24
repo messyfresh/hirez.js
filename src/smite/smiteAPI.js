@@ -105,7 +105,7 @@ class Smite {
   }
 
   getMatchDetails (matchId) {
-  let url = util.genUrl(this.smiteUrl, 'getmatchdetails', this.devId, this.authKey, process.env.smiteSession) + '/' + matchId
+    let url = util.genUrl(this.smiteUrl, 'getmatchdetails', this.devId, this.authKey, process.env.smiteSession) + '/' + matchId
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -145,7 +145,7 @@ class Smite {
   }
 
   getLeagueLeaderBoard (queue, tier, season) {
-  let url = util.genUrl(this.smiteUrl, 'getleagueleaderboard', this.devId, this.authKey, process.env.smiteSession) + '/' + queue +
+    let url = util.genUrl(this.smiteUrl, 'getleagueleaderboard', this.devId, this.authKey, process.env.smiteSession) + '/' + queue +
     '/' + tier + '/' + season
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
@@ -159,7 +159,7 @@ class Smite {
   }
 
   getLeagueSeasons (queue) {
-  let url = util.genUrl(this.smiteUrl, 'getleagueseasons', this.devId, this.authKey, process.env.smiteSession) + '/' + queue
+    let url = util.genUrl(this.smiteUrl, 'getleagueseasons', this.devId, this.authKey, process.env.smiteSession) + '/' + queue
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -172,7 +172,7 @@ class Smite {
   }
 
   getMatchHistory (userName) {
-  let url = util.genUrl(this.smiteUrl, 'getmatchhistory', this.devId, this.authKey, process.env.smiteSession) + '/' + userName
+    let url = util.genUrl(this.smiteUrl, 'getmatchhistory', this.devId, this.authKey, process.env.smiteSession) + '/' + userName
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -317,12 +317,12 @@ class Smite {
 
   ping () {
     let url = this.smiteUrl + 'pingjson'
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
-          resolve (JSON.parse(body))
+          resolve(JSON.parse(body))
         } else {
-          reject (console.error(body))
+          reject(console.error(body))
         }
       })
     })

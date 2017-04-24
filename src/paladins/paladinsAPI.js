@@ -145,12 +145,12 @@ class Paladins {
 
   ping () {
     let url = this.paladinsUrl + 'pingjson'
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
-          resolve (JSON.parse(body))
+          resolve(JSON.parse(body))
         } else {
-          reject (console.error(body))
+          reject(console.error(body))
         }
       })
     })
