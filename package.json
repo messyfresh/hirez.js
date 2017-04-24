@@ -1,0 +1,36 @@
+{
+  "name": "hirez.js",
+  "version": "0.0.1",
+  "description": "Hi-Rez Studios API Wrapper for Smite and Paladins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/messyfresh/hirez.js.git"
+  },
+  "keywords": [
+    "hirez",
+    "smite",
+    "paladins"
+  ],
+  "author": {
+    "name": "Scott Nix",
+    "username": "messyfresh",
+    "email": "messyfresh@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/messyfresh/hirez.js/issues"
+  },
+  "homepage": "https://github.com/messyfresh/hirez.js#readme",
+  "dependencies": {
+    "md5": "^2.2.1",
+    "moment": "^2.17.1",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
+}
