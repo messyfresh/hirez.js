@@ -45,19 +45,19 @@ function genSession (baseUrl, devId, authHash, platform) {
         let sessionID = JSON.parse(body)
         switch (platform) {
           case 'smitePc':
-            process.env.smiteSession = sessionID
+            process.env.smiteSession = sessionID.session_id
             resolve(sessionID)
             break
           case 'paladinsPc':
-            process.env.paladinsSession = sessionID
+            process.env.paladinsSession = sessionID.session_id
             resolve(sessionID)
             break
           case 'smiteXbox':
-            process.env.smiteXboxSession = sessionID
+            process.env.smiteXboxSession = sessionID.session_id
             resolve(sessionID)
             break
           case 'smitePS4':
-            process.env.smitePS4Session = sessionID
+            process.env.smitePS4Session = sessionID.session_id
             resolve(sessionID)
         }
       } else {
