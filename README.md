@@ -42,7 +42,7 @@ I did this because I was tired of passing the same few variables to every
 single call to the api.  This library will pass all of those variables
 for you auto-magically.
 
-#####Generate a session
+##### Generate a session
 
 The 'smite' reference below can be interchanged with the desired platform
 + smite
