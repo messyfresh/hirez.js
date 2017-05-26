@@ -1,6 +1,6 @@
 {
   "name": "hirez.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hi-Rez Studios API Wrapper for Smite and Paladins",
   "main": "hirez.js",
   "scripts": {
