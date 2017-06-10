@@ -238,6 +238,11 @@ Get Player Status
 hirez.paladins.getPlayerStatus('Username')
 ```
 
+Get Player Achievements
+```javascript
+hirez.paladins.getPlayerAchievements('Player Id')
+```
+
 Get Patch Info
 ```javascript
 hirez.paladins.getPatchInfo()
