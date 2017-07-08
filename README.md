@@ -53,7 +53,7 @@ The 'smite' reference below can be interchanged with the desired game
 + smite
 + paladins
 
-Also 'platform' reference cam be interchanged with the desired platform
+Also 'platform' reference can be interchanged with the desired platform
 + pc
 + xbox
 + ps4
