@@ -44,20 +44,28 @@ function genSession (baseUrl, devId, authHash, platform) {
       if (!error && response.statusCode === 200) {
         let sessionID = JSON.parse(body)
         switch (platform) {
-          case 'smitePc':
-            process.env.smiteSession = sessionID.session_id
+          case 'smitePC':
+            process.env.SMITE_PC_SESSION = sessionID.session_id
             resolve(sessionID)
             break
-          case 'paladinsPc':
-            process.env.paladinsSession = sessionID.session_id
-            resolve(sessionID)
-            break
-          case 'smiteXbox':
-            process.env.smiteXboxSession = sessionID.session_id
+          case 'smiteXBOX':
+            process.env.SMITE_XBOX_SESSION = sessionID.session_id
             resolve(sessionID)
             break
           case 'smitePS4':
-            process.env.smitePS4Session = sessionID.session_id
+            process.env.SMITE_PS4_SESSION = sessionID.session_id
+            resolve(sessionID)
+            break
+          case 'paladinsPC':
+            process.env.PALADINS_PC_SESSION = sessionID.session_id
+            resolve(sessionID)
+            break
+          case 'paladinsXBOX':
+            process.env.PALADINS_XBOX_SESSION = sessionID.session_id
+            resolve(sessionID)
+            break
+          case 'paladinsPS4':
+            process.env.PALADINS_PS4_SESSION = sessionID.session_id
             resolve(sessionID)
         }
       } else {
@@ -71,17 +79,23 @@ function genSession (baseUrl, devId, authHash, platform) {
 function testSession (baseUrl, devId, authKey, platform) {
   let sessionId
   switch (platform) {
-    case ('smitePc'):
-      sessionId = process.env.smiteSession
+    case ('smitePC'):
+      sessionId = process.env.SMITE_PC_SESSION
       break
-    case ('paladinsPc'):
-      sessionId = process.env.paladinsSession
-      break
-    case ('smiteXbox'):
-      sessionId = process.env.smiteXboxSession
+    case ('smiteXBOX'):
+      sessionId = process.env.SMITE_XBOX_SESSION
       break
     case ('smitePS4'):
-      sessionId = process.env.smitePS4Session
+      sessionId = process.env.SMITE_PS4_SESSION
+      break
+    case ('paladinsPC'):
+      sessionId = process.env.PALADINS_PC_SESSION
+      break
+    case ('paladinsXBOX'):
+      sessionId = process.env.PALADINS_XBOX_SESSION
+      break
+    case ('paladinsPS4'):
+      sessionId = process.env.PALADINS_PS4_SESSION
   }
   let url = util.genUrl(baseUrl, 'testsession', devId, authKey, sessionId)
   console.log(url)

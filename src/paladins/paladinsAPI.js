@@ -5,16 +5,23 @@ const request = require('request')
 const util = require('../util')
 const SessionAPI = require('../sessions/sessionAPI')
 
+const platform = {
+  PC: 'http://api.paladins.com/paladinsapi.svc/',
+  XBOX: 'http://api.paladins.com/paladinsapi.svc/',
+  PS4: 'http://api.paladins.com/paladinsapi.svc/'
+}
+
 class Paladins {
   constructor (args) {
     this.devId = args.devId
     this.authKey = args.authKey
-    this.paladinsUrl = 'http://api.paladins.com/paladinsapi.svc/'
-    this.session = new SessionAPI(this.paladinsUrl, this.devId, this.authKey, 'paladinsPc')
+    this.paladinsUrl = platform[args.platform.toUpperCase()]
+    this.platform = args.platform.toUpperCase()
+    this.session = new SessionAPI(this.paladinsUrl, this.devId, this.authKey, `paladins${this.platform}`)
   }
 
   getFriends (userName) {
-    let url = util.genUrl(this.paladinsUrl, 'getfriends', this.devId, this.authKey, process.env.paladinsSession) + '/' + userName
+    let url = util.genUrl(this.paladinsUrl, 'getfriends', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/' + userName
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -27,7 +34,7 @@ class Paladins {
   }
 
   getChampionRanks (userName) {
-    let url = util.genUrl(this.paladinsUrl, 'getchampionranks', this.devId, this.authKey, process.env.paladinsSession) + '/' + userName
+    let url = util.genUrl(this.paladinsUrl, 'getchampionranks', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/' + userName
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -40,7 +47,7 @@ class Paladins {
   }
 
   getChampions () {
-    let url = util.genUrl(this.paladinsUrl, 'getchampions', this.devId, this.authKey, process.env.paladinsSession) + '/1'
+    let url = util.genUrl(this.paladinsUrl, 'getchampions', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/1'
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -53,7 +60,7 @@ class Paladins {
   }
 
   getChampionSkins (godId) {
-    let url = util.genUrl(this.paladinsUrl, 'getchampionskins', this.devId, this.authKey, process.env.paladinsSession) + '/' + godId + '/1'
+    let url = util.genUrl(this.paladinsUrl, 'getchampionskins', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/' + godId + '/1'
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -66,7 +73,7 @@ class Paladins {
   }
 
   getItems () {
-    let url = util.genUrl(this.paladinsUrl, 'getitems', this.devId, this.authKey, process.env.paladinsSession) + '/1'
+    let url = util.genUrl(this.paladinsUrl, 'getitems', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/1'
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -79,7 +86,7 @@ class Paladins {
   }
 
   getMatchDetails (matchId) {
-    let url = util.genUrl(this.paladinsUrl, 'getmatchdetails', this.devId, this.authKey, process.env.paladinsSession) + '/' + matchId
+    let url = util.genUrl(this.paladinsUrl, 'getmatchdetails', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/' + matchId
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -92,7 +99,7 @@ class Paladins {
   }
 
   getMatchHistory (userName) {
-    let url = util.genUrl(this.paladinsUrl, 'getmatchhistory', this.devId, this.authKey, process.env.paladinsSession) + '/' + userName
+    let url = util.genUrl(this.paladinsUrl, 'getmatchhistory', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/' + userName
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -105,7 +112,7 @@ class Paladins {
   }
 
   getPlayer (userName) {
-    let url = util.genUrl(this.paladinsUrl, 'getplayer', this.devId, this.authKey, process.env.paladinsSession) + '/' + userName
+    let url = util.genUrl(this.paladinsUrl, 'getplayer', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/' + userName
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -118,7 +125,7 @@ class Paladins {
   }
 
   getPlayerAchievements (userId) {
-    let url = util.genUrl(this.paladinsUrl, 'getplayerachievements', this.devId, this.authKey, process.env.paladinsSession) + '/' + userId
+    let url = util.genUrl(this.paladinsUrl, 'getplayerachievements', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/' + userId
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -131,7 +138,7 @@ class Paladins {
   }
 
   getPlayerStatus (userName) {
-    let url = util.genUrl(this.paladinsUrl, 'getplayerstatus', this.devId, this.authKey, process.env.paladinsSession) + '/' + userName
+    let url = util.genUrl(this.paladinsUrl, 'getplayerstatus', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`]) + '/' + userName
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -144,7 +151,7 @@ class Paladins {
   }
 
   getPatchInfo () {
-    let url = util.genUrl(this.paladinsUrl, 'getpatchinfo', this.devId, this.authKey, process.env.paladinsSession)
+    let url = util.genUrl(this.paladinsUrl, 'getpatchinfo', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`])
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
@@ -170,7 +177,7 @@ class Paladins {
   }
 
   getDataUsed () {
-    let url = util.genUrl(this.paladinsUrl, 'getdataused', this.devId, this.authKey, process.env.smiteSession)
+    let url = util.genUrl(this.paladinsUrl, 'getdataused', this.devId, this.authKey, process.env[`PALADINS_${this.platform}_SESSION`])
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
