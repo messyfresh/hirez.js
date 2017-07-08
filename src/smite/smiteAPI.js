@@ -5,18 +5,18 @@ const request = require('request')
 const util = require('../util')
 const SessionAPI = require('../sessions/sessionAPI')
 
-const platform = {
+const API = {
   PC: 'http://api.smitegame.com/smiteapi.svc/',
   XBOX: 'http://api.xbox.smitegame.com/smiteapi.svc/',
   PS4: 'http://api.ps4.smitegame.com/smiteapi.svc/'
 }
 
 class Smite {
-  constructor (args) {
+  constructor (args, platform) {
     this.devId = args.devId
     this.authKey = args.authKey
-    this.smiteUrl = platform[args.platform.toUpperCase()]
-    this.platform = args.platform.toUpperCase()
+    this.smiteUrl = API[platform.toUpperCase()]
+    this.platform = platform.toUpperCase()
     this.session = new SessionAPI(this.smiteUrl, this.devId, this.authKey, `smite${this.platform}`)
   }
 
@@ -347,7 +347,6 @@ class Smite {
       })
     })
   }
-
 }
 
 module.exports = Smite

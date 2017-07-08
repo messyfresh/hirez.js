@@ -5,18 +5,18 @@ const request = require('request')
 const util = require('../util')
 const SessionAPI = require('../sessions/sessionAPI')
 
-const platform = {
+const API = {
   PC: 'http://api.paladins.com/paladinsapi.svc/',
   XBOX: 'http://api.paladins.com/paladinsapi.svc/',
   PS4: 'http://api.paladins.com/paladinsapi.svc/'
 }
 
 class Paladins {
-  constructor (args) {
+  constructor (args, platform) {
     this.devId = args.devId
     this.authKey = args.authKey
-    this.paladinsUrl = platform[args.platform.toUpperCase()]
-    this.platform = args.platform.toUpperCase()
+    this.paladinsUrl = API[platform.toUpperCase()]
+    this.platform = platform.toUpperCase()
     this.session = new SessionAPI(this.paladinsUrl, this.devId, this.authKey, `paladins${this.platform}`)
   }
 
@@ -188,7 +188,6 @@ class Paladins {
       })
     })
   }
-
 }
 
 module.exports = Paladins

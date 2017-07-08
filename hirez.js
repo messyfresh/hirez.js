@@ -8,15 +8,11 @@ class Hirez {
   }
 
   smite (platform) {
-    let self = this
-    self.platform = platform
-    return new Smite(self)
+    return new Smite(this, platform)
   }
 
   paladins (platform) {
-    let self = this
-    self.platform = platform
-    return new Paladins(self)
+    return new Paladins(this, platform)
   }
 }
 
