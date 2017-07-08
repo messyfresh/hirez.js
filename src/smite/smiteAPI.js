@@ -18,6 +18,11 @@ class Smite {
     this.smiteUrl = API[platform.toUpperCase()]
     this.platform = platform.toUpperCase()
     this.session = new SessionAPI(this.smiteUrl, this.devId, this.authKey, `smite${this.platform}`)
+    this.session.test().then(tested => {
+      if (tested.startsWith('Invalid session id.')) {
+        this.session.generate();
+      }
+    })
   }
 
   getFriends (userName) {
