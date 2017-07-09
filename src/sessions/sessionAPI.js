@@ -12,6 +12,30 @@ class SessionAPI {
     this.platform = platform
   }
 
+  exitsts () {
+    let sessionId;
+    switch (this.platform) {
+      case ('smitePC'):
+        sessionId = process.env.SMITE_PC_SESSION
+        break
+      case ('smiteXBOX'):
+        sessionId = process.env.SMITE_XBOX_SESSION
+        break
+      case ('smitePS4'):
+        sessionId = process.env.SMITE_PS4_SESSION
+        break
+      case ('paladinsPC'):
+        sessionId = process.env.PALADINS_PC_SESSION
+        break
+      case ('paladinsXBOX'):
+        sessionId = process.env.PALADINS_XBOX_SESSION
+        break
+      case ('paladinsPS4'):
+        sessionId = process.env.PALADINS_PS4_SESSION
+    }
+    return (sessionId !== undefined);
+  }
+
   generate () {
     return genSession(this.baseUrl, this.devId, util.authHash(this.devId, this.authKey, 'createsession'), this.platform)
       .then((response) => {

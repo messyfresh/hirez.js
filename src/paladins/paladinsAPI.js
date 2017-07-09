@@ -19,8 +19,8 @@ class Paladins {
     this.platform = platform.toUpperCase()
     this.session = new SessionAPI(this.paladinsUrl, this.devId, this.authKey, `paladins${this.platform}`)
     this.session.test().then(tested => {
-      if (tested.startsWith('Invalid session id.')) {
-        this.session.generate();
+      if (tested.startsWith('Invalid session id.') || !this.session.exitsts()) {
+        this.session.generate()
       }
     })
   }
