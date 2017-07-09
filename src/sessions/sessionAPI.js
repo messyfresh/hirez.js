@@ -122,7 +122,6 @@ function testSession (baseUrl, devId, authKey, platform) {
       sessionId = process.env.PALADINS_PS4_SESSION
   }
   let url = util.genUrl(baseUrl, 'testsession', devId, authKey, sessionId)
-  console.log(url)
   return new Promise(function (resolve, reject) {
     request(url, (error, response, body) => {
       if (!error && response.statusCode === 200) {
