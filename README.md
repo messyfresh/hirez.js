@@ -4,10 +4,9 @@
 Promise based Object Oriented Node.js API Wrapper for Hi-Rez Studios games. 
 Currently supporting the following games:
 + Smite
-  + PC Version Only
 + Paladins
-  
-Xbox and PS4 not implemented.
+
+Supporting all platforms.
 
 Getting Started
 ---------------
@@ -34,9 +33,15 @@ Sessions
 
 I have made this module a little opinionated in that when you generate
 a Session ID, it will be returned with the promise AND stored in a
-process.env variable.  The variables are as follows
-+ Smite PC === process.env.smiteSession
-+ Paladins PC === process.env.paladinsSession
+process.env variable. The variables are as follows:
++ Smite:
+  + PC === `process.env.SMITE_PC_SESSION`
+  + XBOX === `process.env.SMITE_XBOX_SESSION`
+  + PS4 === `process.env.SMITE_PS4_SESSION`
++ Paladins:
+  + PC === `process.env.PALADINS_PC_SESSION`
+  + XBOX === `process.env.PALADINS_XBOX_SESSION`
+  + PS4 === `process.env.PALADINS_PS4_SESSION`
 
 I did this because I was tired of passing the same few variables to every
 single call to the api.  This library will pass all of those variables
@@ -44,12 +49,17 @@ for you auto-magically.
 
 ##### Generate a session
 
-The 'smite' reference below can be interchanged with the desired platform
+The 'smite' reference below can be interchanged with the desired game
 + smite
 + paladins
 
+Also 'platform' reference can be interchanged with the desired platform
++ pc
++ xbox
++ ps4
+
 ```javascript
-hirez.smite.session.generate()
+hirez.smite('platform').session.generate()
   .then((res) => {
   // The res variable with be your sessionId
   // It is also assigned to a process.env variable
@@ -58,7 +68,7 @@ hirez.smite.session.generate()
 
 Test the session
 ```javascript
-hirez.session.test().then((response) => {
+hirez.smite('platform').test().then((response) => {
   // Successful or failed response
 })
 ```
@@ -67,127 +77,127 @@ Smite
 -----
 Get Friends
 ```javascript
-hirez.smite.getFriends('Username')
+hirez.smite('platform').getFriends('Username')
 ```
 
 Get Esports Pro League Details
 ```javascript
-hirez.smite.getEsportsProLeagueDetails()
+hirez.smite('platform').getEsportsProLeagueDetails()
 ```
 
 Get God Ranks
 ```javascript
-hirez.smite.getGodRanks('Username')
+hirez.smite('platform').getGodRanks('Username')
 ```
 
 Get Gods
 ```javascript
-hirez.smite.getGods()
+hirez.smite('platform').getGods()
 ```
 
 Get God Skins
 ```javascript
-hirez.smite.getGodSkins('God Id')
+hirez.smite('platform').getGodSkins('God Id')
 ```
 
 Get God Recommended Items
 ```javascript
-hirez.smite.getGodRecommendedItems('God Id')
+hirez.smite('platform').getGodRecommendedItems('God Id')
 ```
 
 Get Items
 ```javascript
-hirez.smite.getItems()
+hirez.smite('platform').getItems()
 ```
 
 Get Match Details
 ```javascript
-hirez.smite.getMatchDetails('Match Id')
+hirez.smite('platform').getMatchDetails('Match Id')
 ```
 
 Get Player Match Details
 ```javascript
-hirez.smite.getMatchPlayerDetails('Match Id')
+hirez.smite('platform').getMatchPlayerDetails('Match Id')
 ```
 
 Get Match Ids By Queue
 ```javascript
-hirez.smite.getMatchIdsByQueue('Queue Id', 'Date', 'Time')
+hirez.smite('platform').getMatchIdsByQueue('Queue Id', 'Date', 'Time')
 ```
 
 Get League Leaderboard
 ```javascript
-hirez.smite.getLeagueLeaderBoard('Queue Id', 'Tier', 'Season')
+hirez.smite('platform').getLeagueLeaderBoard('Queue Id', 'Tier', 'Season')
 ```
 
 Get League Seasons
 ```javascript
-hirez.smite.getLeagueSeasons('Queue Id')
+hirez.smite('platform').getLeagueSeasons('Queue Id')
 ```
 
 Get Match History
 ```javascript
-hirez.smite.getMatchHistory('/Username')
+hirez.smite('platform').getMatchHistory('Username')
 ```
 
 Get Match of the Day (MotD)
 ```javascript
-hirez.smite.getMotd()
+hirez.smite('platform').getMotd()
 ```
 
 Get Player
 ```javascript
-hirez.smite.getPlayer('Username')
+hirez.smite('platform').getPlayer('Username')
 ```
 
 Get Player Status
 ```javascript
-hirez.smite.getPlayerStatus('Username')
+hirez.smite('platform').getPlayerStatus('Username')
 ```
 
 Get Queue Stats
 ```javascript
-hirez.smite.getQueueStats('Username', 'Queue Id')
+hirez.smite('platform').getQueueStats('Username', 'Queue Id')
 ```
 
 Get Team Details
 ```javascript
-hirez.smite.getTeamDetails('Team Id')
+hirez.smite('platform').getTeamDetails('Team Id')
 ```
 
 Get Team Players
 ```javascript
-hirez.smite.getTeamPlayers('Team Id')
+hirez.smite('platform').getTeamPlayers('Team Id')
 ```
 
 Get Top Matches
 ```javascript
-hirez.smite.getTopMatches()
+hirez.smite('platform').getTopMatches()
 ```
 
 Search Teams
 ```javascript
-hirez.smite.searchTeams('Search Term')
+hirez.smite('platform').searchTeams('Search Term')
 ```
 
 Get Player Achievements
 ```javascript
-hirez.smite.getPlayerAchievements('Player Id')
+hirez.smite('platform').getPlayerAchievements('Player Id')
 ```
 
 Get Patch Version
 ```javascript
-hirez.smite.getPatchInfo()
+hirez.smite('platform').getPatchInfo()
 ```
 
 Ping API Webservice
 ```javascript
-hirez.smite.ping()
+hirez.smite('platform').ping()
 ```
 
 Get Data Used
 ```javascript
-hirez.smite.getDataUsed()
+hirez.smite('platform').getDataUsed()
 ```
 
 Paladins
@@ -195,65 +205,65 @@ Paladins
 
 Get Friends
 ```javascript
-hirez.paladins.getFriends('Username')
+hirez.paladins('platform').getFriends('Username')
 ```
 
 Get Champion Ranks
 ```javascript
-hirez.paladins.getChampionRanks('Username')
+hirez.paladins('platform').getChampionRanks('Username')
 ```
 
 Get Champions
 ```javascript
-hirez.paladins.getChampions()
+hirez.paladins('platform').getChampions()
 ```
 
 Get Champion Skins
 ```javascript
-hirez.paladins.getChampionSkins('Champion Id')
+hirez.paladins('platform').getChampionSkins('Champion Id')
 ```
 
 Get Items
 ```javascript
-hirez.paladins.getItems()
+hirez.paladins('platform').getItems()
 ```
 
 Get Match Details
 ```javascript
-hirez.paladins.getMatchDetails('Match Id')
+hirez.paladins('platform').getMatchDetails('Match Id')
 ```
 
 Get Match History
 ```javascript
-hirez.paladins.getMatchHistory('Username')
+hirez.paladins('platform').getMatchHistory('Username')
 ```
 
 Get Player
 ```javascript
-hirez.paladins.getPlayer('Username')
+hirez.paladins('platform').getPlayer('Username')
 ```
 
 Get Player Status
 ```javascript
-hirez.paladins.getPlayerStatus('Username')
+hirez.paladins('platform').getPlayerStatus('Username')
 ```
 
 Get Player Achievements
 ```javascript
-hirez.paladins.getPlayerAchievements('Player Id')
+hirez.paladins('platform').getPlayerAchievements('Player Id')
 ```
 
 Get Patch Info
 ```javascript
-hirez.paladins.getPatchInfo()
+hirez.paladins('platform').getPatchInfo()
 ```
 
 Ping API Webservice
 ```javascript
-hirez.paladins.ping()
+hirez.paladins('platform').ping()
 ```
 
 Get Data Used
 ```javascript
-hirez.paladins.getDataUsed()
+hirez.paladins('platform').getDataUsed()
 ```

@@ -5,8 +5,14 @@ class Hirez {
   constructor (args) {
     this.devId = args.devId
     this.authKey = args.authKey
-    this.smite = new Smite(this)
-    this.paladins = new Paladins(this)
+  }
+
+  smite (platform) {
+    return new Smite(this, platform)
+  }
+
+  paladins (platform) {
+    return new Paladins(this, platform)
   }
 }
 
