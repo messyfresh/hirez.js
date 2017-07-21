@@ -170,6 +170,20 @@ class Smite {
     })
   }
 
+  getGodLeaderBoard (godId, queue) {
+    let url = util.genUrl(this.smiteUrl, 'getgotleaderboard', this.devId, this.authKey, process.env[`SMITE_${this.platform}_SESSION`]) + '/' + godId +
+    '/' + queue
+    return new Promise(function (resolve, reject) {
+      request(url, (error, response, body) => {
+        if (!error && response.statusCode === 200) {
+          resolve(JSON.parse(body))
+        } else {
+          reject(error)
+        }
+      })
+    })
+  }
+
   getLeagueSeasons (queue) {
     let url = util.genUrl(this.smiteUrl, 'getleagueseasons', this.devId, this.authKey, process.env[`SMITE_${this.platform}_SESSION`]) + '/' + queue
     return new Promise(function (resolve, reject) {
