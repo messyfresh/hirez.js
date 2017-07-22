@@ -171,7 +171,7 @@ class Smite {
   }
 
   getGodLeaderBoard (godId, queue) {
-    let url = util.genUrl(this.smiteUrl, 'getgotleaderboard', this.devId, this.authKey, process.env[`SMITE_${this.platform}_SESSION`]) + '/' + godId +
+    let url = util.genUrl(this.smiteUrl, 'getgodleaderboard', this.devId, this.authKey, process.env[`SMITE_${this.platform}_SESSION`]) + '/' + godId +
     '/' + queue
     return new Promise(function (resolve, reject) {
       request(url, (error, response, body) => {
