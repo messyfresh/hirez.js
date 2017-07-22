@@ -129,6 +129,10 @@ Get League Leaderboard
 ```javascript
 hirez.smite('platform').getLeagueLeaderBoard('Queue Id', 'Tier', 'Season')
 ```
+Get God Leaderboard
+```javascript
+hirez.smite('platform').getGodLeaderBoard('God Id', 'Queue Id')
+```
 
 Get League Seasons
 ```javascript
