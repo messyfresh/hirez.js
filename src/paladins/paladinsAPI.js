@@ -19,7 +19,7 @@ class Paladins {
     this.platform = platform.toUpperCase()
     this.session = new SessionAPI(this.paladinsUrl, this.devId, this.authKey, `paladins${this.platform}`)
     this.session.test().then(tested => {
-      if (tested.startsWith('Invalid session id.') || !this.session.exitsts()) {
+      if (tested && (tested.startsWith('Invalid session id.') || !this.session.exitsts())) {
         this.session.generate()
       }
     })
@@ -175,7 +175,7 @@ class Paladins {
         if (!error && response.statusCode === 200) {
           resolve(JSON.parse(body))
         } else {
-          reject(console.error(body))
+          reject(error)
         }
       })
     })

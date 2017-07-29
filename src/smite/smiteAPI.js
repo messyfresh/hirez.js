@@ -19,7 +19,7 @@ class Smite {
     this.platform = platform.toUpperCase()
     this.session = new SessionAPI(this.smiteUrl, this.devId, this.authKey, `smite${this.platform}`)
     this.session.test().then(tested => {
-      if (tested.startsWith('Invalid session id.') || !this.session.exitsts()) {
+      if (tested && (tested.startsWith('Invalid session id.') || !this.session.exitsts())) {
         this.session.generate()
       }
     })
@@ -348,7 +348,7 @@ class Smite {
         if (!error && response.statusCode === 200) {
           resolve(JSON.parse(body))
         } else {
-          reject(console.error(body))
+          reject(error)
         }
       })
     })
