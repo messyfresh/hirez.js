@@ -175,7 +175,7 @@ class Paladins {
         if (!error && response.statusCode === 200) {
           resolve(JSON.parse(body))
         } else {
-          reject(response)
+          reject(error)
         }
       })
     })
