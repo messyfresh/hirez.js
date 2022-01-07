@@ -5,6 +5,7 @@ Promise based Object Oriented Node.js API Wrapper for Hi-Rez Studios games.
 Currently supporting the following games:
 + Smite
 + Paladins
++ Realm Royale
 
 Supporting all platforms.
 
