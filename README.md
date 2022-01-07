@@ -272,3 +272,17 @@ Get Data Used
 ```javascript
 hirez.paladins('platform').getDataUsed()
 ```
+
+
+Realm Royale
+--------
+
+Search Players
+```javascript
+hirez.realm('platform').SearchPlayers('userName')
+```
+
+Get Player Match History
+```javascript
+hirez.realm('platform').getPlayerMatchHistory('userID')
+```
