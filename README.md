@@ -5,6 +5,7 @@ Promise based Object Oriented Node.js API Wrapper for Hi-Rez Studios games.
 Currently supporting the following games:
 + Smite
 + Paladins
++ Realm Royale
 
 Supporting all platforms.
 
@@ -42,6 +43,10 @@ process.env variable. The variables are as follows:
   + PC === `process.env.PALADINS_PC_SESSION`
   + XBOX === `process.env.PALADINS_XBOX_SESSION`
   + PS4 === `process.env.PALADINS_PS4_SESSION`
++ Realm Royale:
+  + PC === `process.env.REALM_PC_SESSION`
+  + XBOX === `process.env.REALM_XBOX_SESSION`
+  + PS4 === `process.env.REALM_PS4_SESSION`
 
 I did this because I was tired of passing the same few variables to every
 single call to the api.  This library will pass all of those variables
@@ -52,6 +57,7 @@ for you auto-magically.
 The 'smite' reference below can be interchanged with the desired game
 + smite
 + paladins
++ realm
 
 Also 'platform' reference can be interchanged with the desired platform
 + pc
@@ -270,4 +276,18 @@ hirez.paladins('platform').ping()
 Get Data Used
 ```javascript
 hirez.paladins('platform').getDataUsed()
+```
+
+
+Realm Royale
+--------
+
+Search Players
+```javascript
+hirez.realm('platform').SearchPlayers('userName')
+```
+
+Get Player Match History
+```javascript
+hirez.realm('platform').getPlayerMatchHistory('userID')
 ```

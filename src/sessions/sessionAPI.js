@@ -32,6 +32,16 @@ class SessionAPI {
         break
       case ('paladinsPS4'):
         sessionId = process.env.PALADINS_PS4_SESSION
+        break
+      case ('realmPC'):
+        sessionId = process.env.REALM_PC_SESSION
+        break
+      case ('realmXBOX'):
+        sessionId = process.env.REALM_XBOX_SESSION
+        break
+      case ('realmPS4'):
+        sessionId = process.env.REALM_PS4_SESSION
+        break
     }
     return (sessionId !== undefined);
   }
@@ -91,6 +101,19 @@ function genSession (baseUrl, devId, authHash, platform) {
           case 'paladinsPS4':
             process.env.PALADINS_PS4_SESSION = sessionID.session_id
             resolve(sessionID)
+            break
+          case 'realmPC':
+            process.env.REALM_PC_SESSION = sessionID.session_id
+            resolve(sessionID)
+            break
+          case 'realmXBOX':
+            process.env.REALM_XBOX_SESSION = sessionID.session_id
+            resolve(sessionID)
+            break
+          case 'realmPS4':
+            process.env.REALM_PS4_SESSION = sessionID.session_id
+            resolve(sessionID)
+            break
         }
       } else {
         reject(error)
@@ -120,6 +143,16 @@ function testSession (baseUrl, devId, authKey, platform) {
       break
     case ('paladinsPS4'):
       sessionId = process.env.PALADINS_PS4_SESSION
+      break
+    case ('realmPC'):
+      sessionId = process.env.REALM_PC_SESSION
+      break
+    case ('realmXBOX'):
+      sessionId = process.env.REALM_XBOX_SESSION
+      break
+    case ('realmPS4'):
+      sessionId = process.env.REALM_PS4_SESSION
+      break
   }
   let url = util.genUrl(baseUrl, 'testsession', devId, authKey, sessionId)
   return new Promise(function (resolve, reject) {
